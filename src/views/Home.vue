@@ -16,10 +16,17 @@ export default {
   },
   computed: {},
   watch: {},
-  methods: {},
+  methods: {
+    mapLoad() {},
+  },
   created() {},
   mounted() {},
   beforeDestroy() {},
 };
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.home {
+  width: 100%;
+  height: 100%;
+}
+</style>

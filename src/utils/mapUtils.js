@@ -1,4 +1,4 @@
-// import { styleNull } from "@/config/style.js";
+import { styleNull } from "@/config/style.js";
 import { assignIn } from "lodash";
 
 const CONFIG = {
@@ -41,7 +41,7 @@ export function initMap(mapOptions) {
     ...options,
   });
 
-  setMap(map)
+  setMap(map);
 
   return map;
 }
@@ -50,5 +50,5 @@ export function destroyMap() {
   const map = getMap();
   if (!map) return;
   map.remove();
-  CONFIG.map = null
+  CONFIG.map = null;
 }

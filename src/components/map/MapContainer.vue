@@ -25,10 +25,6 @@ export default {
         map.setSunLight(date);
       }, 1000 * 60);
 
-      map.enableLight();
-      const sunLight = new minemap.SunLight("#ffffff", 1, Date.now());
-      map.addLight(sunLight);
-
       function _initCurrentTime() {
         const date = dayjs();
         return {
