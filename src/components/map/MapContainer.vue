@@ -5,7 +5,6 @@
 <script>
 import { load4MineMap } from "@/utils/loadMineMap.js";
 import { initMap, getMap } from "@/utils/mapUtils.js";
-import dayjs from "dayjs";
 
 export default {
   name: "MapContainer",
@@ -16,38 +15,19 @@ export default {
   },
   computed: {},
   watch: {},
-  methods: {
-    initSunLight() {
-      const map = getMap();
-      setInterval(() => {
-        // 按分钟更新地球夜景效果
-        const date = _initCurrentTime();
-        map.setSunLight(date);
-      }, 1000 * 60);
-
-      function _initCurrentTime() {
-        const date = dayjs();
-        return {
-          month: date.month() + 1,
-          day: date.date(),
-          hour: date.hour(),
-          minute: date.minute(),
-        };
-      }
-    },
-  },
+  methods: {},
   created() {},
   async mounted() {
     load4MineMap().then((res) => {
-      // console.log(res);
       if (res.msg === "success") {
-        const map = initMap();
+        const map = initMap({
+          container: "map",
+        });
 
         map.repaint = true;
 
         map.on("load", () => {
           this.$emit("mapLoad", map);
-          this.initSunLight();
         });
       } else {
         console.error("load minemap error");

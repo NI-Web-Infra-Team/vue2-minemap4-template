@@ -1,5 +1,5 @@
 {
-  "name": "vue2-minemap4-template",
+  "name": "vue2-minemap-project",
   "private": true,
   "version": "0.0.1",
   "type": "module",
@@ -17,7 +17,7 @@
     "axios": "^1.6.4",
     "dayjs": "^1.11.10",
     "element-ui": "^2.15.14",
-    "lodash": "^4.17.21",
+    "lodash-es": "^4.17.21",
     "uuid": "^9.0.1",
     "vite-plugin-vue2": "^2.0.3",
     "vue": "^2.7.16",

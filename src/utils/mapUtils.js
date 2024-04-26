@@ -1,19 +1,18 @@
 import { styleNull } from "@/config/style.js";
-import { assignIn } from "lodash";
+import { assignIn } from "lodash-es";
 
-const CONFIG = {
-  map: null,
-};
+const CONFIG = {};
 
-function setMap(map) {
-  if (CONFIG.map) {
-    console.error("map 已经初始化过了");
+function setMap(key, map) {
+  if (CONFIG[key]) {
+    console.warn(`map ${key} has been set`);
+    return;
   }
-  CONFIG.map = map;
+  CONFIG[key] = map;
 }
 
-export function getMap() {
-  return CONFIG.map3d;
+export function getMap(key) {
+  return CONFIG[key];
 }
 
 export function initMap(mapOptions) {
@@ -35,20 +34,21 @@ export function initMap(mapOptions) {
   const options = assignIn(defaultOptions, mapOptions);
 
   const map = new minemap.Map({
-    container: "map",
-    SSAASamples: 2,
+    container: mapOptions.container,
+    // SSAASamples: 2,
     style: styleNull,
     ...options,
   });
 
-  setMap(map);
+  setMap(mapOptions.container, map);
 
   return map;
 }
 
-export function destroyMap() {
-  const map = getMap();
+export function destroyMap(key) {
+  const map = getMap(key);
   if (!map) return;
+
   map.remove();
   CONFIG.map = null;
 }
